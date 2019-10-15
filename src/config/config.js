@@ -10,7 +10,9 @@ export default function Config() {
     DB_PORT,
     DB_CLIENT,
     APP_NAME,
-    SECRET
+    SECRET,
+    PORT,
+    REDIS_URL
   } = process.env;
   let config = { appName: APP_NAME, NODE_ENV: NODE_ENV || 'development' };
 
@@ -23,8 +25,9 @@ export default function Config() {
     dbPort: DB_PORT,
     dbClient: DB_CLIENT,
     secret: SECRET,
+    port: PORT,
     redisStore: {
-      url: process.env.REDIS_URL,
+      url: REDIS_URL,
       secret: SECRET
     }
   });
