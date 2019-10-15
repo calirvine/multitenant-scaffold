@@ -1,0 +1,27 @@
+# docker-compose.yml
+redis:
+  image: redis
+  container_name: cache
+  expose:
+    - 6379
+
+app:
+  build: ./
+  volumes:
+    - ./:/var/www/app
+  links:
+    - redis
+  ports:
+    - 8000:8000
+  environment:
+    - REDIS_URL=redis://cache
+    - NODE_ENV=development
+    - PORT=8000
+    - APP_NAME=multitenant_scaffold
+    - DB_HOST=
+    - DB_USER=
+    - DB_PASSWORD=
+    - DB_CLIENT=pg
+    - DB_PORT=5432
+    - SECRET=
+  command: sh -c 'npm i && npm start'

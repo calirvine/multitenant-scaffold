@@ -1,0 +1,40 @@
+{
+  "name": "multitenantscaffold",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./lib/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "babel src/ -d lib/",
+    "prepublish": "npm run build",
+    "start": "nodemon --ignore client/ --exec babel-node src/index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
+    "connect-redis": "^4.0.3",
+    "continuation-local-storage": "^3.2.1",
+    "dotenv": "^8.1.0",
+    "eventemitter2": "^5.0.1",
+    "express": "^4.17.1",
+    "express-session": "^1.16.2",
+    "morgan": "^1.9.1",
+    "nodemon": "^1.19.3",
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0",
+    "pg": "^7.12.1",
+    "redis": "^2.8.0",
+    "uuid": "^3.3.3"
+  },
+  "devDependencies": {
+    "@babel/node": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
+    "@babel/cli": "^7.5.5",
+    "@babel/core": "^7.5.5",
+    "@babel/preset-flow": "^7.0.0",
+    "flow-bin": "^0.106.3"
+  }
+}
