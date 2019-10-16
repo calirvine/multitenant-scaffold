@@ -1,17 +1,19 @@
-import express from 'express';
-const app = express();
+const express = require('express');
 const initApp = require('./init');
-import Config from './config/config';
-const config = Config();
+const Config = require('./config/config');
+const { connectAllDb } = require('./connections/connectionManager');
+const routes = require('./routes');
 
-import { connectAllDb } from './connections/connectionManager';
+const config = Config();
+const app = express();
 
 async function startApplication() {
-  const routes = require('./routes');
   const PORT = config.port || 8080;
 
   initApp.attachMiddleware(app);
-  connectAllDb();
+  connectAllDb().then(res => {
+    if (res === true) console.log('App is ready');
+  });
 
   app.use('/', routes);
 
@@ -19,7 +21,5 @@ async function startApplication() {
     console.log(`${config.appName} started at port: ${PORT}`);
   });
 }
-
-console.log('Attempting to start application...');
 
 startApplication();

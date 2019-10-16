@@ -1,5 +1,4 @@
 const commonDb = require('./commonDBConnection');
-const init = require('../init');
 const em = require('../subscribers');
 const events = require('../subscribers/events');
 
@@ -24,8 +23,10 @@ export async function connectAllDb() {
       .reduce((prev, next) => {
         return Object.assign({}, prev, next);
       }, {});
+    return true;
   } catch (e) {
     em.emit(events.app.initDb);
+    return false;
   }
 }
 
