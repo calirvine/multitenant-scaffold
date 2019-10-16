@@ -1,8 +1,7 @@
 import { createNamespace } from 'continuation-local-storage';
 
 import { getTenantSchemaByDomain } from './connectionManager';
-import Config from '../config/config';
-const config = Config();
+const config = require('../config/config');
 // Create a namespace for the application.
 let nameSpace = createNamespace(`${config.appName} context`);
 

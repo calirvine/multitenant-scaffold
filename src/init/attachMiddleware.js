@@ -6,8 +6,7 @@ const redisClient = redis.createClient(process.env.REDIS_URL);
 const uuid = require('uuid/v4');
 import morgan from 'morgan';
 import * as bodyParser from 'body-parser';
-import Config from '../config/config';
-const config = Config();
+const config = require('../config/config');
 import * as connectionResolver from '../connections/connectionResolver';
 
 module.exports = async app => {

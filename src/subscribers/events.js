@@ -5,5 +5,8 @@ module.exports = {
   },
   user: {
     signUp: 'user_signup'
+  },
+  tenant: {
+    createSchema: 'create_schema'
   }
 };

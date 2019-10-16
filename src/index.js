@@ -1,10 +1,10 @@
 const express = require('express');
 const initApp = require('./init');
-const Config = require('./config/config');
+const config = require('./config/config');
 const { connectAllDb } = require('./connections/connectionManager');
 const routes = require('./routes');
 
-const config = Config();
+//const config = Config();
 const app = express();
 
 async function startApplication() {

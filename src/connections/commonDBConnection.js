@@ -1,7 +1,7 @@
 import { Pool } from 'pg';
 
-import Config from '../config/config';
-const { appName, dbHost, dbUser, dbPort, dbPassword, NODE_ENV } = Config();
+const config = require('../config/config');
+const { appName, dbHost, dbUser, dbPort, dbPassword, NODE_ENV } = config;
 
 const versionString = `_${NODE_ENV}`;
 

@@ -41,9 +41,7 @@ export function getTenantSchemaByDomain(domain) {
   return null;
 }
 
-import Config from '../config/config';
-const config = Config();
-
+const config = require('../config/config');
 /**
  *  Get the connection information (knex instance) for current context.
  **/
