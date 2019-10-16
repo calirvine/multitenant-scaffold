@@ -20,5 +20,6 @@ async function startApplication() {
   });
 }
 
-console.log('Initializing application...');
-initApp.initCommonDb().then(res => startApplication());
+console.log('Attempting to start application...');
+
+startApplication();
