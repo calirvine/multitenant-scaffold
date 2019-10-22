@@ -8,10 +8,12 @@ import morgan from 'morgan';
 import * as bodyParser from 'body-parser';
 const config = require('../config/config');
 import * as connectionResolver from '../connections/connectionResolver';
+const middlewares = require('../config/middleware');
 
 module.exports = async app => {
   app.use(bodyParser.json());
   app.use(morgan('tiny'));
+  app.use(middlewares.logger);
   app.use(connectionResolver.resolve);
   app.use(
     session({
