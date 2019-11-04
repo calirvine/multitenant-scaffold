@@ -14,7 +14,7 @@ module.exports = async app => {
   app.use(bodyParser.json());
   app.use(morgan('tiny'));
   app.use(middlewares.logger);
-  app.use(connectionResolver.resolve);
+
   app.use(
     session({
       genid: req => uuid(),
@@ -25,6 +25,7 @@ module.exports = async app => {
       saveUninitialized: false
     })
   );
+  app.use(connectionResolver.resolve);
   app.use(passport.initialize());
   app.use(passport.session());
 };

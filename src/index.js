@@ -13,6 +13,10 @@ async function startApplication() {
   initApp.attachMiddleware(app);
   connectAllDb().then(res => {
     if (res === true) console.log('App is ready');
+    else {
+      console.log("App isn't ready, please run build script.");
+      process.exit(1);
+    }
   });
 
   app.use('/', routes);

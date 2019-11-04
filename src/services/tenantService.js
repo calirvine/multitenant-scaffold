@@ -28,11 +28,11 @@ module.exports = {
     }
   },
 
-  postTenant: async (user, domain, tenantName) => {
+  postTenant: async (user, domain) => {
     try {
       const { rows: tenant } = await db.query(
-        'INSERT INTO tenants (domain, tenant_name, primary_user, updated_at, status) VALUES ($1, $2, $3, NOW(), 1) RETURNING *',
-        [domain, tenantName, user]
+        'INSERT INTO tenants (domain, primary_user, updated_at, status) VALUES ($1, $2, NOW(), 1) RETURNING *',
+        [domain, user]
       );
       em.emit(events.tenant.createSchema, tenant[0]);
       return tenant[0];
