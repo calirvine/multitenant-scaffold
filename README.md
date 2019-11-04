@@ -17,7 +17,7 @@ You will need to create a database with format appName + versionString where app
 
 ## Currently working on:
 
-Better seperation of concerns to help make the app scale easier. Up next is routes for initializing schemas for new tenants with default tables and table data.
+Making the application stateless, moving tenant connection info out of local-storage and into (probably?) Redis.
 
 ## Structure:
 
