@@ -28,7 +28,10 @@ Making the application stateless, moving tenant connection info out of local-sto
     - commonDBConnection - creates a pg pool and exposes a function for executing queries. Returns a promise.
     - connectionManager - maps tenant data into seperate namespaces as well as getting the correct connection for the currently connected tennant
     - connectionResolver - matches the incoming connection to a tenant mapped by connectionManager
-    - redisConnection - config for Redis
+    - redisConnection - creates an interface for interacting with redis client
+      - set (key, value, print: boolean) prints to console if print is true, the rest is self explanatory
+      - get (key) returns a promise
+      - del (key) deletes key
   - init
     - attachMiddleware - exposes function that takes express app and attaches middleware used by the application to the app
     - commonDb - Checks if common app tables exist. If they do not, they are created with default entries.
