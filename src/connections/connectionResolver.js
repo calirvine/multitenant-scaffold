@@ -1,5 +1,4 @@
 import { getTenantSchemaByDomain } from './connectionManager';
-const config = require('../config/config');
 
 /**
  * Get the connection instance for the given tenant's domain and set it to the current context.

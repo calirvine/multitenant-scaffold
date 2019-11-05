@@ -12,7 +12,7 @@ export async function connectAllDb() {
     );
 
     tenants.map(tenant => {
-      const schema = tenant.id.replace(/-/g, '');
+      const schema = `t_${tenant.id.replace(/-/g, '')}`;
       updateRedisConnections('ADD DOMAIN', {
         domain: tenant.domain,
         value: schema
@@ -38,7 +38,7 @@ export async function getTenantSchemaByDomain(domain) {
       [domain]
     );
     if (rows.length > 0) {
-      const schema = rows[0].id.replace(/-/g, '');
+      const schema = `t_${rows[0].id.replace(/-/g, '')}`;
       updateRedisConnections('ADD DOMAIN', { domain: domain, value: schema });
       return { domain, schema };
     }
@@ -66,9 +66,4 @@ export function updateRedisConnections(
     default:
       return;
   }
-}
-
-export function getConnection(domain) {
-  const result = redis.get(domain);
-  return result;
 }

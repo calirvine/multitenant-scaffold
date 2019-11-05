@@ -14,8 +14,9 @@ async function startApplication() {
   connectAllDb().then(res => {
     if (res === true) console.log('App is ready');
     else {
+      console.log({ res });
       console.log("App isn't ready, please run build script.");
-      process.exit(1);
+      process.exit(0);
     }
   });
 

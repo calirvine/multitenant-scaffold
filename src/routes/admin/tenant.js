@@ -21,16 +21,14 @@ router.get('/', async (req, res) => {
 });
 
 router.post('/', async (req, res) => {
-  const { user, domain, tenantName } = req.body;
-  if (!user || !domain || !tenantName) {
-    return res
-      .status(400)
-      .send({
-        error: { message: 'Information about tenant missing from request.' }
-      });
+  const { user, domain } = req.body;
+  if (!user || !domain) {
+    return res.status(400).send({
+      error: { message: 'Information about tenant missing from request.' }
+    });
   }
   try {
-    const tenant = await tenantService.postTenant(user, domain, tenantName);
+    const tenant = await tenantService.postTenant(user, domain);
     res.status(201).send(tenant);
   } catch (err) {
     res.status(500).send({ err });

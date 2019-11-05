@@ -1,6 +1,7 @@
 # docker-compose.yml
 redis:
   image: redis
+  command: [sh, -c, 'rm -f /data/dump.rdb && redis-server'] # disable persistence
   container_name: cache
   expose:
     - 6379

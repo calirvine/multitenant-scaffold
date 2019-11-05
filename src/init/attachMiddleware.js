@@ -7,7 +7,6 @@ const uuid = require('uuid/v4');
 import morgan from 'morgan';
 import * as bodyParser from 'body-parser';
 const config = require('../config/config');
-import * as connectionResolver from '../connections/connectionResolver';
 const middlewares = require('../config/middleware');
 
 module.exports = async app => {
@@ -25,7 +24,6 @@ module.exports = async app => {
       saveUninitialized: false
     })
   );
-  app.use(connectionResolver.resolve);
   app.use(passport.initialize());
   app.use(passport.session());
 };
