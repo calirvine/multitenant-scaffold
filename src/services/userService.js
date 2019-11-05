@@ -1,5 +1,5 @@
 const authUtils = require('../authentication/utils');
-const db = require('../connections/commonDBConnection');
+const db = require('../connections/postgresConnection');
 const em = require('../subscribers/');
 const events = require('../subscribers/events');
 

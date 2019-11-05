@@ -1,6 +1,6 @@
 const passport = require('passport');
 const LocalStrategy = require('passport-local');
-const db = require('../connections/commonDBConnection');
+const db = require('../connections/postgresConnection');
 const utils = require('./utils');
 
 passport.use(

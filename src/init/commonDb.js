@@ -1,4 +1,4 @@
-const commonDB = require('../connections/commonDBConnection');
+const commonDB = require('../connections/postgresConnection');
 const authUtils = require('../authentication/utils');
 
 async function checkForTables() {

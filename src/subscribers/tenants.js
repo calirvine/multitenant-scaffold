@@ -1,5 +1,5 @@
 const events = require('./events');
-const db = require('../connections/commonDBConnection');
+const db = require('../connections/postgresConnection');
 const redis = require('../connections/redisConnection');
 
 const initSchema = async (tenant, em) => {

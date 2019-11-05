@@ -7,7 +7,7 @@ client.on('connect', function() {
 });
 
 client.on('error', function(err) {
-  console.log('Something went wrong ' + err);
+  console.log('Unable to connect to redis ' + err);
 });
 
 module.exports = {
