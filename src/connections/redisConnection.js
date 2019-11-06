@@ -17,7 +17,7 @@ module.exports = {
   get: key => {
     return new Promise(resolve => {
       client.get(key, (error, result) => {
-        resolve(result);
+        if (!error) resolve(result);
       });
     });
   },
@@ -26,5 +26,25 @@ module.exports = {
   },
   update: (key, newKey) => {
     client.rename(key, newKey);
+  },
+  hset: (hash, key, value) => {
+    client.hset(hash, key, value);
+  },
+  hget: (hash, key) => {
+    return new Promise(resolve => {
+      client.hget(hash, key, (error, reply) => {
+        if (!error) resolve(reply);
+      });
+    });
+  },
+  hdel: (hash, key) => {
+    client.hdel(hash, key);
+  },
+  hupdate: (hash, oldKey, newKey) => {
+    client.hget(hash, oldKey, (error, reply) => {
+      if (error) throw error;
+      this.hset(hash, newKey, reply);
+      this.hdel(hash, oldKey);
+    });
   }
 };

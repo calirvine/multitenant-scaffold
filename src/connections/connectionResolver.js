@@ -23,6 +23,7 @@ export async function resolve(req, res, next) {
     });
     return;
   }
+
   req.tenant = tenant;
 
   next();

@@ -29,7 +29,7 @@ export async function connectAllDb() {
  *  Get the schema name for the given tenant's domain.
  **/
 export async function getTenantSchemaByDomain(domain) {
-  const connectionSchema = await redis.get(domain);
+  const connectionSchema = await redis.hget('domains', domain);
   if (connectionSchema) return connectionSchema;
   else {
     console.log('Checking db');
@@ -52,15 +52,15 @@ export function updateRedisConnections(
 ) {
   switch (action) {
     case 'DELETE': {
-      redis.del(payload.domain);
+      redis.hdel('domains', payload.domain);
       break;
     }
     case 'UPDATE DOMAIN': {
-      redis.update(payload.domain, payload.replaceDomain);
+      redis.hupdate('domains', payload.domain, payload.replaceDomain);
       break;
     }
     case 'ADD DOMAIN': {
-      redis.set(payload.domain, payload.value);
+      redis.hset('domains', payload.domain, payload.value);
       break;
     }
     default:
