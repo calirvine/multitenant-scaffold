@@ -18,7 +18,7 @@ app:
     - REDIS_URL=redis://cache
     - NODE_ENV=development
     - PORT=8000
-    - APP_NAME=multitenant_scaffold
+    - APP_NAME=RealtorApp
     - DB_CLIENT=pg
     - DB_PORT=5432
   command: sh -c 'npm i && npm start'

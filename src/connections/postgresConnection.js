@@ -5,7 +5,7 @@ try {
 
   const versionString = `_${NODE_ENV}`;
 
-  const commonDb = appName + versionString;
+  const commonDb = (appName + versionString).toLowerCase();
 
   const poolConfig = {
     user: dbUser,
@@ -27,5 +27,5 @@ try {
   console.log(
     `App failed to connect to database, please ensure your environment variables are set up correctly and that your database is running.`
   );
-  process.exit(0);
+  process.exit(1);
 }

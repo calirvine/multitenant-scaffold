@@ -4,7 +4,6 @@ const config = require('./config/config');
 const { connectAllDb } = require('./connections/connectionManager');
 const routes = require('./routes');
 
-//const config = Config();
 const app = express();
 
 async function startApplication() {
@@ -12,6 +11,7 @@ async function startApplication() {
   connectAllDb().then(res => {
     if (res === true) {
       initApp.attachMiddleware(app);
+
       app.use('/', routes);
 
       const server = app.listen(PORT, () => {
@@ -51,9 +51,9 @@ async function startApplication() {
     } else {
       console.log({ res });
       console.log("App isn't ready, please run init script.");
-      process.exit(0);
+      process.exit(1);
     }
   });
 }
-
+//initApp.initCommonDb();
 startApplication();
