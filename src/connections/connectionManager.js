@@ -1,4 +1,4 @@
-const commonDb = require('./commonDBConnection');
+const commonDb = require('./postgresConnection');
 const redis = require('./redisConnection');
 
 /**
