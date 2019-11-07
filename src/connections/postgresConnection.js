@@ -19,8 +19,8 @@ try {
   pool.on('connect', () => console.log('PG connected'));
   pool.on('error', () => console.log('Error connecting to PG'));
   module.exports = {
-    query: (text, params) => {
-      return pool.query(text, params);
+    query: (query, params) => {
+      return pool.query(query, params);
     }
   };
 } catch (err) {
